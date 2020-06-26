@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+        .alert{
+            width: 20%;
+            height: 20%;
+            
+        }
+    </style>
+    
+</head>
+<body>
+    {% if request.user.is_staff %}
+
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Roll number</th>
+                <th>Name</th>
+                <th>Telugu</th>
+                <th>English</th>
+                <th>Hindi</th>
+                <th>Science</th>
+                <th>Physics</th>
+                <th>Date of birth</th>
+            </tr>
+        </thead>
+        {% for d in data %}
+        
+        <tr>         
+            <td>{{d.id}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.sub1}}</td>
+            <td>{{d.sub2}}</td>
+            <td>{{d.sub3}}</td>
+            <td>{{d.sub4}}</td>
+            <td>{{d.sub5}}</td>
+            <td>{{d.Dob}}</td>
+            
+            <td>
+                <a href="accounts/edit/{{d.id}}"><span class="btn btn-success btn-dark btn-sm">Edit</span></a>
+                <a href="accounts/delete/{{d.id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+            
+        </tr>
+    
+    
+        {% endfor %}
+    </table>
+    {% for message in messages %}
+            <div class="alert alert-success alert-dismissible">
+                <a href="details" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{message}}
+              </div>
+    {% endfor %}
+
+    {% else %}
+    You are not authorised to access this page
+    {% endif %}
+    
+</body>
+</html>

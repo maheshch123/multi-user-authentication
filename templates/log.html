@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>login</title>
+    </head>
+        <body style=" background-color:burlywood;">
+            <h2>Login</h2>
+            <form action="log" method="POST">
+            {% csrf_token %}
+            <input type="username" name="username" placeholder="enter your username" size="20" autofocus><br><br>
+            <input type="password" name="password" placeholder="password" size="20" required><br><br>
+            <input type="submit" value="login">
+            </form>
+            <div>
+                {% for message in messages %}
+                    <h3>{{message}}</h3>
+                {% endfor %}
+            </div>
+        </body>
+</html>
+
+
+
+

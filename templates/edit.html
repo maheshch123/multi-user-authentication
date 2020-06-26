@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Zone</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .alert{
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+
+    {% if request.user.is_staff %}
+
+    <form action="update/{{data.id}}" method="POST" class="post-form">
+        
+        {% csrf_token %}
+        <div class="container">
+        <br>
+        <div class="form-group row">
+        <label for="" class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+            <h3>Enter Details</h3>
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">ID</label>
+            <div class="col-sm-4">
+                <input type="text" name="id" value="{{data.id}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Name</label>
+            <div class="col-sm-4">
+                <input type="text" name="name" value="{{data.name}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Telugu</label>
+            <div class="col-sm-4">
+                <input type="text" name="sub1" value="{{data.sub1}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">English</label>
+            <div class="col-sm-4">
+                <input type="text" name="sub2" value="{{data.sub2}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Hindi</label>
+            <div class="col-sm-4">
+                <input type="text" name="sub3" value="{{data.sub3}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Science</label>
+            <div class="col-sm-4">
+                <input type="text" name="sub4" value="{{data.sub4}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Physics</label>
+            <div class="col-sm-4">
+                <input type="text" name="sub5" value="{{data.sub5}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label">Dob</label>
+            <div class="col-sm-4">
+                <input type="text" name="id" value="{{data.Dob}}">
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary btn-dark">Submit</button>
+        </div>
+        </div>
+        <div>
+        <a href="{% url 'details' %}">Details page</a>
+        </div>
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible">
+                
+                {{message}}
+              </div>
+        {% endfor %}
+
+        </div>
+        
+    </form>
+    {% else %}
+    You are not authorised to access this page
+    {% endif %}
+</body>
+</html>

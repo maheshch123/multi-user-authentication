@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>welcome student</title>
+        <style>
+            h4{
+                text-align: center;
+                color: blue;
+                
+            }
+            h3{
+              color: blue;
+          }
+          td{
+              color: blue;
+          }
+          span{
+            color: blue;
+          }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+        <body>
+           
+           {% if user.is_authenticated %}  
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Student Dashboard</a>
+              </div>
+              
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+               
+              </ul>
+            </div>
+        </nav>
+            
+            
+
+
+
+
+            <h4> Student Name: <span>{{user.first_name.upper}}</span> </h4><br><br>
+
+            <form action="stud1" method="GET">
+              <input type="text" name="id" placeholder="roll number">
+              <input type="text" name="name" placeholder="name">
+              <input type="submit" value="search"><br><br>
+
+              
+            </form>
+
+            {% for message in messages %}
+            <h2>{{message}}</h2>
+            {% endfor %}
+            {% for g in Gets %}
+            <h3>Results for :{{g.id}}</h3><br>
+            {% endfor %}
+
+            <table border="2" cellpadding="3" cellspacing="2" width="500">
+                <tr>
+                    <th>Roll Number</th>
+                    <th>name</th>
+                    <th>telugu</th>
+                    <th>english</th>
+                    <th>hindi</th>
+                    <th>science</th>
+                    <th>physics</th>
+                    <th>Date of birth</th>
+                </tr>
+
+                <tr>
+                    {% for g in Gets %}
+                    <td>{{g.id}}</td>
+                    <td>{{g.name}}</td>
+                    <td>{{g.sub1}}</td>
+                    <td>{{g.sub2}}</td>
+                    <td>{{g.sub3}}</td>
+                    <td>{{g.sub4}}</td>
+                    <td>{{g.sub5}}</td>
+                    <td>{{g.Dob}}</td>
+
+                    {% endfor %}
+
+                </tr>
+
+
+            </table>
+            {% else %}
+            <h2></h2>
+
+            <h2> you are not authorised to access this page</h2>
+            <a href="{% url 'index' %}">Home page</a>
+            {% endif %}
+    
+        </body>
+</html>
