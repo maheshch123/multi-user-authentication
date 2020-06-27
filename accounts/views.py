@@ -107,10 +107,6 @@ def logout(request):
 
 # teacher block
 
-# def logout1(request):
-    # auth.logout(request)
-    # return redirect('/')
-
 def log(request):
     if request.method == 'POST':
         username=request.POST['username']
